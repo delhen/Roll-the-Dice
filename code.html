@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Roll the Dice!</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <h1 style="text-align: center;font-size: 4em;">ROLL YOUR DICE!</h1>
+    <div class="flex-container">
+      <h3>P1</h3>
+      <div class="dice">
+        <div class="node mrgn-top">
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+        </div>
+        <div class="node mrgn-top">
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+        </div>
+        <div class="node mrgn-top">
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+        </div>
+      </div>
+      <div class="dice">
+        <div class="node mrgn-top">
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+        </div>
+        <div class="node mrgn-top">
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+        </div>
+        <div class="node mrgn-top">
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="30" fill="white" />
+          </svg>
+        </div>
+      </div>
+      <h3>P2</h3>
+    </div>
+    <div class="tap">
+      <button type="button" name="button" onclick="getResult()" style="cursor:pointer;"">Click Me!</button>
+      <p id="result"></p>
+    </div>
+    <div class="footer">
+      <p>Created by Delian</p>
+    </div>
+    <script>
+      var l = document.querySelectorAll('.dice')[0];
+      var r = document.querySelectorAll('.dice')[1];
+      var p1 = Math.floor(Math.random() * 10) % 6;
+      var p2 = Math.floor(Math.random() * 10) % 6;
+      changeStyle(p1, l);
+      changeStyle(p2, r);
+
+      function getResult(){
+        p1 = Math.floor(Math.random() * 10) % 6;
+        p2 = Math.floor(Math.random() * 10) % 6;
+        changeStyle(p1, l);
+        changeStyle(p2, r);
+        if(p1 > p2){
+          document.getElementById('result').innerHTML = "The winner is : P1";
+        }else if(p1 < p2){
+          document.getElementById('result').innerHTML = "The winner is : P2";
+        }else{
+          document.getElementById('result').innerHTML = "Draw!";
+        }
+      }
+
+      function changeStyle(x, y){
+        for(var z = 0; z < y.querySelectorAll('svg').length; ++z){
+          y.querySelectorAll('svg')[z].style.visibility = 'hidden';
+        }
+        switch(x){
+          case 0:
+            y.querySelectorAll('.node')[1].querySelectorAll('svg')[1].style.visibility = 'visible';
+            break;
+          case 1:
+            y.querySelectorAll('.node')[0].querySelectorAll('svg')[0].style.visibility = 'visible';
+            y.querySelectorAll('.node')[2].querySelectorAll('svg')[2].style.visibility = 'visible';
+            break;
+          case 2:
+            y.querySelectorAll('.node')[0].querySelectorAll('svg')[0].style.visibility = 'visible';
+            y.querySelectorAll('.node')[1].querySelectorAll('svg')[1].style.visibility = 'visible';
+            y.querySelectorAll('.node')[2].querySelectorAll('svg')[2].style.visibility = 'visible';
+            break;
+          case 3:
+            y.querySelectorAll('.node')[0].querySelectorAll('svg')[0].style.visibility = 'visible';
+            y.querySelectorAll('.node')[0].querySelectorAll('svg')[2].style.visibility = 'visible';
+            y.querySelectorAll('.node')[2].querySelectorAll('svg')[0].style.visibility = 'visible';
+            y.querySelectorAll('.node')[2].querySelectorAll('svg')[2].style.visibility = 'visible';
+            break;
+          case 4:
+            y.querySelectorAll('.node')[0].querySelectorAll('svg')[0].style.visibility = 'visible';
+            y.querySelectorAll('.node')[0].querySelectorAll('svg')[2].style.visibility = 'visible';
+            y.querySelectorAll('.node')[1].querySelectorAll('svg')[1].style.visibility = 'visible';
+            y.querySelectorAll('.node')[2].querySelectorAll('svg')[0].style.visibility = 'visible';
+            y.querySelectorAll('.node')[2].querySelectorAll('svg')[2].style.visibility = 'visible';
+            break;
+          case 5:
+            y.querySelectorAll('.node')[0].querySelectorAll('svg')[0].style.visibility = 'visible';
+            y.querySelectorAll('.node')[0].querySelectorAll('svg')[2].style.visibility = 'visible';
+            y.querySelectorAll('.node')[1].querySelectorAll('svg')[0].style.visibility = 'visible';
+            y.querySelectorAll('.node')[1].querySelectorAll('svg')[2].style.visibility = 'visible';
+            y.querySelectorAll('.node')[2].querySelectorAll('svg')[0].style.visibility = 'visible';
+            y.querySelectorAll('.node')[2].querySelectorAll('svg')[2].style.visibility = 'visible';
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
